@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    vertical-align: baseline;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-family: var(--system-ui);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  span, div, legend, label, p, option {
+    font-size: 1.4rem;
+  }
+  
+  body {
+    max-width: 2600px;
+    margin: 0 auto;
+    padding: 0;
+    font-size: 1.6rem;
+    line-height: 1.75;
+    letter-spacing: 0.05rem;
+  }
+  
+  img, picture, video, canvas, svg,
+  article, aside, details, figcaption, figure,
+  footer, header, hgroup, menu, nav, section {
+    display: block;
+    max-width: 100%;
+  }
+  
+  button, textarea, select, input, li {
+    font: inherit;
+  }
+  
+  h1, h2, h3 {
+    font-weight: 700;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+  }
+  
+  ul {
+    list-style: disc;
+  }
+  
+  ol {
+    list-style-position: outside;
+    list-style: decimal;
+  }
+  
+  td, th {
+    border: 1px solid var(--text-color);
+  }
+  
+  blockquote, q {
+  quotes: none;
+  }
+  
+  *::not(img),
+  *::before,
+  *::after {
+    margin: inherit;
+    padding: inherit;
+    box-sizing: inherit;
+  }
+  
+  input {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  }
+  
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  input[type=number] {
+    -moz-appearance: textfield;
+  }

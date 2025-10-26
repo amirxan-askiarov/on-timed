@@ -1,0 +1,537 @@
+:root {
+    --black: rgb(0, 0, 0);
+
+    --interactive-pointer-style: pointer;
+    --scale-size-hover-panels: 1.05;
+    --scale-size-hover-icons: 1.1;
+    --click-animation-duration: 0.1s;
+    --popup-animation-duration: 0.4s;
+
+    --completed-task-color: rgb(50, 240, 50);
+    --menu-border-color: var(--whitesmoke);
+    --required-color: rgb(255, 60, 0);
+    --selected-background-color: #a3dcff;
+    --selected-border-color: var(--white);
+
+    --text-color: rgb(45, 45, 45);
+    --borders-color: rgb(90, 90, 90);
+
+    --element-panels-border-radius: 0.5rem;
+    --main-panels-border-radius: 1rem;
+}
+
+button {
+  cursor: var(--interactive-pointer-style);
+  position: relative;
+  will-change: transform;
+  transition: transform var(--click-animation-duration) ease;
+}
+
+button:focus {
+  outline: 0.2rem ridge var(--black);
+  border: 0.1rem solid var(--selected-border-color);
+  border-radius: var(--element-panels-border-radius);
+  transform: scale(var(--scale-size-hover-icons));
+}
+
+input:focus {
+  outline: 0.2rem ridge var(--black);
+  border: 0.1rem solid var(--selected-border-color);
+  border-radius: var(--element-panels-border-radius);
+}
+
+button:hover {
+  transform: scale(var(--scale-size-hover-icons));
+}
+
+button:active {
+  transform: scale(1);
+}
+
+.error-modal,
+.project-menu,
+.task-menu,
+.remove-menu {
+  opacity: 0%;
+  transition: opacity var(--popup-animation-duration) ease;
+}
+
+.error-modal.shown,
+.project-menu.shown,
+.task-menu.shown,
+.remove-menu.shown {
+  opacity: 100%;
+  visibility: visible;
+}
+
+  /* Sidebar */
+  @media only screen and (max-width: 900px) {
+    aside {
+      left: -300px;
+      transition: left var(--popup-animation-duration) ease;
+    }
+    aside.shown {
+      left: 0;
+      visibility: visible;
+    }
+  }
+
+  .content-background-container .view-options.bar {
+    transition: right var(--popup-animation-duration) ease;
+  }
+  .content-background-container .view-options.bar.shown {
+    right: 0;
+    transform-origin: right;
+  }
+
+  .bar-types > *.current,
+  aside .projects-list > .project.current {
+    background-color: var(--selected-background-color);
+  }
+  
+  .bar-types > *.current,
+  .projects-list > *.current {
+    border: 0.1rem solid var(--selected-border-color);
+  }
+
+  .bar-types > *:hover,
+  .bar-types > *:focus {
+    transform: scale(var(--scale-size-hover-panels));
+  }
+
+  .bar-types > *:active {
+    transform: scale(1);
+  }
+
+  .project {
+    transition: transform var(--click-animation-duration);
+  }
+  
+  .project:active {
+    transform: scale(1);
+  }
+
+  .project:hover,
+  .project:focus {
+    cursor: pointer;
+    transform: scale(var(--scale-size-hover-panels));
+  }
+
+  .project:focus {
+    outline: 0.2rem ridge var(--black);
+    border: 0.1rem solid var(--selected-border-color);
+    border-radius: var(--element-panels-border-radius);
+  }
+
+  .project:active {
+    transform: scale(1);
+  }
+
+  .bar-footer {
+    cursor: pointer;
+  }
+
+  .bar-footer:hover,
+  .bar-footer:focus {
+    transform: scale(var(--scale-size-hover-panels));
+  }
+
+  .bar-footer:focus {
+    outline: 0.2rem ridge var(--black);
+    border: 0.1rem solid var(--selected-border-color);
+    border-radius: var(--element-panels-border-radius);
+  }
+
+  .bar-footer:active {
+    transform: scale(1);
+  }
+
+  /* View options */
+  .priority-border-box *,
+  .status-border-box *,
+  .sort-options-border-box > * {
+    cursor: pointer;
+  }
+
+   .priority-border-box .option-button:hover,
+   .status-border-box .option-button:hover,
+   .priority-border-box .option-button:focus,
+   .status-border-box .option-button:focus {
+    transform: scale(var(--scale-size-hover-panels));
+    transition: transform var(--click-animation-duration);
+  }
+
+  .priority-border-box .option-button:focus,
+  .status-border-box .option-button:focus {
+    outline: 0.2rem ridge var(--black);
+    border: 0.1rem solid var(--selected-border-color);
+    border-radius: var(--element-panels-border-radius);
+  }
+
+   .priority-border-box .option-button:active,
+   .status-border-box .option-button:active {
+    transform: scale(1);
+  }
+
+ .priority-border-box .option-button > .radio-button::after,
+ .status-border-box .option-button > .radio-button::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: var(--selected-background-color);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+    transform-origin: center center;
+}
+
+ .priority-border-box .option-button > input:checked + .radio-button::after,
+ .status-border-box .option-button > input:checked + .radio-button::after {
+    display: block;
+    transform: scale(1);
+}
+
+.sort-options-border-box .sort-arrow {
+  transition: transform 0.4s ease;
+}
+
+.sort-options-border-box .sort-arrow.enabled {
+  transform: rotate(180deg);
+}
+
+.sort-options-border-box .sort-arrow:focus,
+.sort-options-border-box .sort-arrow:focus {
+  outline: 0.2rem ridge var(--black);
+  border: 0.1rem solid var(--selected-border-color);
+  border-radius: var(--element-panels-border-radius);
+}
+
+
+/* Custom dropdown menu */
+
+/*the container must be positioned relative:*/
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: var(--selected-border-color);
+}
+
+.select-selected:hover {
+  background-color: var(--selected-background-color);
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  right: 0.5rem;
+  background: url(./assets/fold-select.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 2rem;
+  height: 2rem;
+  transition: transform 0.3s ease-in;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  transform: rotate(180deg);
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,
+.select-selected {
+  padding: 0.2rem 0.5rem;
+  border: 0.1rem solid var(--borders-color);
+  background-color: var(--selected-border-color);
+  cursor: pointer;
+  border-radius: var(--element-panels-border-radius);
+}
+
+/*style items (options):*/
+.select-items {
+  border-radius: var(--element-panels-border-radius);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+.select-hide {
+  display: none;
+}
+
+.select-items,
+.select-items div {
+	transition: transform var(--click-animation-duration) ease;
+}
+
+.select-selected:focus,
+.select-items div:hover {
+  background-color: var(--selected-background-color);
+  transform: scale(var(--scale-size-hover-panels));
+  outline: 0.2rem ridge var(--black);
+  border: 0.1rem solid var(--selected-border-color);
+  border-radius: var(--element-panels-border-radius);
+}
+.select-selected:focus,
+.select-items div:focus {
+  background-color: var(--selected-background-color);
+  transform: scale(var(--scale-size-hover-panels));
+  outline: 0.2rem ridge var(--black);
+  border: 0.1rem solid var(--selected-border-color);
+  border-radius: var(--element-panels-border-radius);
+}
+
+/* Task panel */
+
+.task[data-task-status='0'] label.status-checkbox svg {
+  animation: fillCheckboxGreen 0.5s forwards;
+}
+
+@keyframes fillCheckboxGreen {
+  from {
+    stroke: var(--completed-task-color);
+    stroke-dashoffset: 100;
+    stroke-opacity: 0;
+    stroke-width: 3;
+  }
+  to {
+    stroke: var(--completed-task-color);
+    stroke-dashoffset: 0;
+    stroke-opacity: 1;
+    stroke-width: 3;
+  }
+}
+
+.task[data-task-status='0'][data-task-priority='2'] label.status-checkbox svg {
+  animation: fillCheckboxHighPriority 0.5s forwards;
+}
+
+@keyframes fillCheckboxHighPriority {
+  from {
+    stroke: var(--required-color);
+    stroke-dashoffset: 100;
+    stroke-opacity: 0;
+    stroke-width: 3;
+  }
+  to {
+    stroke: var(--required-color);
+    stroke-dashoffset: 0;
+    stroke-opacity: 1;
+    stroke-width: 3;
+  }
+}
+
+.task label.status-checkbox:hover,
+.task label.status-checkbox:focus {
+  cursor: pointer;
+  transform: scale(var(--scale-size-hover-panels));
+  position: relative;
+  transition: transform var(--click-animation-duration);
+  outline: 0.2rem ridge var(--black);
+  border: 0.1rem solid var(--selected-border-color);
+  border-radius: var(--element-panels-border-radius);
+}
+
+.task label.status-checkbox:active {
+  transform: scale(1);
+}
+
+  /* Task page menu */
+
+  .task-menu .button-box > button:hover,
+  .task-menu .button-box > button:focus {
+    transform: scale(var(--scale-size-hover-panels));
+  }
+
+  /* Remove confirmation menu */
+
+  .remove-menu .button-box > button:hover,
+  .remove-menu .button-box > button:focus {
+    transform: scale(var(--scale-size-hover-panels));
+  }
+
+  /* Error modal */
+
+  .error-modal .title .exit:focus {
+    transition: transform var(--click-animation-duration) ease;
+  }
+
+  .error-modal .title .exit:focus {
+    outline: 0.2rem ridge var(--black);
+    border: 0.1rem solid var(--selected-border-color);
+    border-radius: var(--element-panels-border-radius);
+    transform: scale(var(--scale-size-hover-icons));
+  }
+  
+  .error-modal .title .exit:hover {
+    transform: scale(var(--scale-size-hover-icons));
+  }
+
+  .error-modal .title .exit:active {
+    transform: scale(1);
+  }
+
+  .error-modal .button-box .exit-ok:focus {
+    outline: 0.2rem ridge var(--black);
+    border: 0.1rem solid var(--selected-border-color);
+    border-radius: var(--element-panels-border-radius);
+    transform: scale(var(--scale-size-hover-panels));
+    transition: transform var(--click-animation-duration) ease;
+  }
+  
+  .error-modal .button-box .exit-ok:hover {
+    transform: scale(var(--scale-size-hover-panels));
+  }
+
+  .error-modal .button-box .exit-ok:active {
+    transform: scale(1);
+  }
+
+  /* Project menu */
+
+  .project-menu .title .exit:focus {
+    transition: transform var(--click-animation-duration) ease;
+  }
+
+  .project-menu .title .exit:focus {
+    outline: 0.2rem ridge var(--black);
+    border: 0.1rem solid var(--selected-border-color);
+    border-radius: var(--element-panels-border-radius);
+    transform: scale(var(--scale-size-hover-icons));
+  }
+  
+  .project-menu .title .exit:hover {
+    transform: scale(var(--scale-size-hover-icons));
+  }
+
+  .project-menu .title .exit:active {
+    transform: scale(1);
+  }
+
+  .project-menu fieldset > .project-options > * {
+    cursor: pointer;
+    transition: transform var(--click-animation-duration) ease;
+  }
+
+  .project-options .project-icon-option.selected {
+    border-color: var(--selected-border-color);
+    background-color: var(--selected-background-color);
+  }
+
+  .project-menu fieldset > .project-options > *:focus {
+    outline: 0.2rem ridge var(--black);
+    border-radius: var(--element-panels-border-radius);
+    transform: scale(var(--scale-size-hover-icons));
+    transition: transform var(--click-animation-duration) ease;
+  }
+
+  .project-menu fieldset > .project-options > *:hover {
+    transform: scale(var(--scale-size-hover-icons));
+  }
+
+  .project-menu fieldset > .project-options > *:active {
+    transform: scale(1);
+  }
+
+  .project-menu .button-box > *:focus {
+    outline: 0.2rem ridge var(--black);
+    border: 0.1rem solid var(--selected-border-color);
+    border-radius: var(--element-panels-border-radius);
+    transform: scale(var(--scale-size-hover-panels));
+    transition: transform var(--click-animation-duration) ease;
+  }
+  
+  .project-menu .button-box > *:hover {
+    transform: scale(var(--scale-size-hover-panels));
+  }
+
+  .project-menu .button-box > *:active {
+    transform: scale(1);
+  }
+
+  /* Task menu */
+
+  .task-menu .title .exit:focus,
+  .task-menu input:focus,
+  .task-menu textarea:focus,
+  .task-menu .button-box > button:focus {
+    outline: 0.2rem ridge var(--black);
+    border: 0.1rem solid var(--selected-border-color);
+    border-radius: var(--element-panels-border-radius);
+    transition: transform var(--click-animation-duration) ease;
+  }
+
+  .task-menu .button-box > button:hover,
+  .task-menu .button-box > button:focus {
+    transform: scale(var(--scale-size-hover-panels));
+  }
+
+  @media only screen and (max-width: 650px) {
+    .error-modal .title .exit:focus,
+    .error-modal .title .exit:hover,
+    .error-modal .title .exit:active,
+    .error-modal .button-box .exit-ok:focus,
+    .error-modal .button-box .exit-ok:hover,
+    .error-modal .button-box .exit-ok:active,
+    .project-menu .title .exit:focus,
+    .project-menu .title .exit:hover,
+    .project-menu .title .exit:active,
+    .project-menu fieldset > .project-options > *,
+    .project-options .project-icon-option.selected,
+    .project-menu fieldset > .project-options > *:focus,
+    .project-menu fieldset > .project-options > *:hover,
+    .project-menu fieldset > .project-options > *:active,
+    .project-menu .button-box > *:focus,
+    .project-menu .button-box > *:hover,
+    .project-menu .button-box > *:active,
+    .task-menu .title .exit:focus,
+    .task-menu .title .exit:hover,
+    .task-menu .title .exit:active,
+    .task-menu input:focus,
+    .task-menu input:hover,
+    .task-menu input:active,
+    .task-menu textarea:focus,
+    .task-menu textarea:hover,
+    .task-menu textarea:active,
+    .task-menu .button-box > button:focus,
+    .task-menu .button-box > button:hover,
+    .task-menu .button-box > button:active,
+    .priority-border-box .option-button:focus,
+    .priority-border-box .option-button:hover, 
+    .priority-border-box .option-button:active, 
+    .status-border-box .option-button:focus,
+    .status-border-box .option-button:hover,
+    .status-border-box .option-button:active,
+    .select-selected:focus,
+    .select-selected:focus,
+    .select-selected:focus,
+    .select-items div:focus,
+    .select-items div:hover,
+    .select-items div:active,
+    .bar-types > *:hover, 
+    .bar-types > *:focus,
+    .bar-types > *:active,
+    .project:hover, 
+    .project:focus,
+    .project:active,
+    .task label.status-checkbox:hover,
+    .task label.status-checkbox:focus,
+    .task label.status-checkbox:active,
+    button:focus,
+    button:hover,
+    button:active {
+      transform: none;
+    }
+  }
+
+
