@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="48"
+   viewBox="0 -960 960 960"
+   width="48"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="category-job.svg"
+   inkscape:version="1.3 (1:1.3+202307231459+0e150ed6c4)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="9.9166667"
+     inkscape:cx="23.94958"
+     inkscape:cy="24"
+     inkscape:window-width="1366"
+     inkscape:window-height="673"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <path
+     d="M154.694-124.001q-28.254 0-49.473-21.22-21.22-21.219-21.22-49.473v-443.612q0-28.254 21.22-49.473 21.219-21.22 49.473-21.22h171.307v-82.306q0-28.254 21.22-49.473 21.219-21.219 49.473-21.219h166.612q28.254 0 49.473 21.219 21.22 21.219 21.22 49.473v82.306h171.307q28.254 0 49.473 21.22 21.22 21.219 21.22 49.473v443.612q0 28.254-21.22 49.473-21.219 21.22-49.473 21.22H154.694Zm0-58.384h650.612q4.616 0 8.463-3.846 3.846-3.847 3.846-8.463v-443.612q0-4.616-3.846-8.463-3.847-3.846-8.463-3.846H154.694q-4.616 0-8.463 3.846-3.846 3.847-3.846 8.463v443.612q0 4.616 3.846 8.463 3.847 3.846 8.463 3.846Zm229.691-526.614h191.23v-82.306q0-4.616-3.846-8.462-3.847-3.847-8.463-3.847H396.694q-4.616 0-8.463 3.847-3.846 3.846-3.846 8.462v82.306Zm-242 526.614V-650.615-182.385Z"
+     id="path1"
+     style="fill:#2d2d2d;fill-opacity:1" />
+</svg>
